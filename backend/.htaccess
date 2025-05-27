@@ -1,5 +1,0 @@
-RewriteEngine On                        #activo un sistema para redirigir peticiones
-RewriteRule ^(.*)$ server.php [QSA,L]   #redirigo todas las peticiones que pasen por /backend a server.php
-# notar que tras la redireccion, la url ubicada en $_SERVER['REQUEST_URI'] sera la misma que la que el usuario quiso ingresar
-
-# si hay dudas preguntarle a copilot

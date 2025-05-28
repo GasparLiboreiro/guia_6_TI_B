@@ -33,18 +33,27 @@ function setupSubjectFormHandler()
 
         try 
         {
+            const res = "{}";
+            console.log("BLAAA");//<!0> NO ANDA EL CHEQUEO DE UN ERROR DEL SQL
             if (subject.id) 
             {
                 await subjectsAPI.update(subject);
             }
             else
             {
-                await subjectsAPI.create(subject);
+                res = await subjectsAPI.create(subject);
             }
-            
-            form.reset();
-            document.getElementById('subjectId').value = '';
-            loadSubjects();
+            console.error("ERROR");
+            if(JSON.parse(res).error)
+            {
+                alert("No se pudo crear, potencialmente mail ya ingresado");    
+            }
+            else
+            {
+                form.reset();
+                document.getElementById('subjectId').value = '';
+                loadSubjects();
+            }
         }
         catch (err)
         {

@@ -33,7 +33,6 @@ function createSubject($conn, $name)
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $name);
     $stmt->execute();
-
     return 
     [
         'inserted' => $stmt->affected_rows,        

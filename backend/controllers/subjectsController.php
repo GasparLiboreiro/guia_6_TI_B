@@ -30,15 +30,14 @@ function handleGet($conn)
 function handlePost($conn) 
 {
     $input = json_decode(file_get_contents("php://input"), true);
-
-    $result = createSubject($conn, $input['name']);
-    if ($result['inserted'] > 0) 
+    try
     {
+        $result = createSubject($conn, $input['name']);
         echo json_encode(["message" => "Materia creada correctamente"]);
-    } 
-    else 
+    }
+    catch(Exception $e)
     {
-        http_response_code(500);
+        http_response_code(400);
         echo json_encode(["error" => "No se pudo crear"]);
     }
 }

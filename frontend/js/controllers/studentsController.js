@@ -27,16 +27,25 @@ function setupFormHandler()
     
         try 
         {
+            const res ="{}";//<!0>
             if (student.id) 
             {
                 await studentsAPI.update(student);
             } 
             else 
             {
-                await studentsAPI.create(student);
+                res = await studentsAPI.create(student);
             }
-            clearForm();
-            loadStudents();
+            console.error("ERROR");
+            if(JSON.parse(res).error)
+            {
+                alert("No se pudo crear, potencialmente mail ya ingresado");    
+            }
+            else
+            {
+                clearForm();
+                loadStudents();
+            }
         }
         catch (err)
         {

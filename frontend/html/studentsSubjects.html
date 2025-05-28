@@ -23,14 +23,14 @@
       <div class="w3-third">
         <label>Estudiante</label>
         <select id="studentIdSelect" class="w3-select" required>
-          <option value="" disabled selected>Seleccionar estudiante</option>
+          <option value="" disabled selected>Seleccionar estudiante</option> <!--opcion default, invalida-->
           <!-- Opciones se cargan dinámicamente desde JS -->
         </select>
       </div>
       <div class="w3-third">
         <label>Materia</label>
         <select id="subjectIdSelect" class="w3-select" required>
-          <option value="" disabled selected>Seleccionar materia</option>
+          <option value="" disabled selected>Seleccionar materia</option> <!--opcion default, invalida-->
           <!-- Opciones se cargan dinámicamente desde JS -->
         </select>
       </div>
@@ -55,7 +55,7 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody id="relationTableBody"></tbody>
+    <tbody id="relationTableBody"></tbody><!-- se rellenan los studentsSubjects de la db con js -->
   </table>
 
   <footer class="w3-center w3-margin-top">

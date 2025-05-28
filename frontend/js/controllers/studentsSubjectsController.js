@@ -8,8 +8,8 @@
 *    Iteration   : 3.0 ( prototype )
 */
 
-import { studentsAPI } from '../api/studentsAPI.js';
-import { subjectsAPI } from '../api/subjectsAPI.js';
+import { studentsAPI } from '../api/studentsAPI.js'; //  Nesecito las demas apis a demas de la de studentsSubjects
+import { subjectsAPI } from '../api/subjectsAPI.js'; // para poder mostrar los nombres de los usuarios/materias relacionados
 import { studentsSubjectsAPI } from '../api/studentsSubjectsAPI.js';
 
 document.addEventListener('DOMContentLoaded', () => 
@@ -24,7 +24,7 @@ async function initSelects()
 {
     try 
     {
-        // Cargar estudiantes
+        // Cargar seleccion de estudiantes
         const students = await studentsAPI.fetchAll();
         const studentSelect = document.getElementById('studentIdSelect');
         students.forEach(s => 
@@ -35,7 +35,7 @@ async function initSelects()
             studentSelect.appendChild(option);
         });
 
-        // Cargar materias
+        // Cargar seleccion dematerias
         const subjects = await subjectsAPI.fetchAll();
         const subjectSelect = document.getElementById('subjectIdSelect');
         subjects.forEach(sub => 
@@ -106,7 +106,7 @@ function clearForm()
     document.getElementById('relationId').value = '';
 }
 
-async function loadRelations() 
+async function loadRelations()//esta funcion lo unico que hace es convertir a la columna "approved" en ints y despues llama renderRelationsTable()
 {
     try 
     {

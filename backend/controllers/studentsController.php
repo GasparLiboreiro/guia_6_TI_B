@@ -30,15 +30,14 @@ function handleGet($conn)
 function handlePost($conn) 
 {
     $input = json_decode(file_get_contents("php://input"), true);
-
-    $result = createStudent($conn, $input['fullname'], $input['email'], $input['age']);
-    if ($result['inserted'] > 0) 
+    try
     {
+        $result = createStudent($conn, $input['fullname'], $input['email'], $input['age']);
         echo json_encode(["message" => "Estudiante agregado correctamente"]);
-    } 
-    else 
+    }
+    catch(Exception $e)
     {
-        http_response_code(500);
+        http_response_code(400);
         echo json_encode(["error" => "No se pudo agregar"]);
     }
 }

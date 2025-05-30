@@ -9,6 +9,10 @@
 *    Iteration   : 3.0 ( prototype )
 */
 
+
+// respuesta ejercicio 3)d) no :-)
+
+
 /**FOR DEBUG: */
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
@@ -24,6 +28,12 @@ function sendCodeMessage($code, $message = "")
     echo json_encode(["message" => $message]);
     exit();
 }
+
+// me re gusto esto pero como muestro un html nada mas, lo redirecciono a el archivo y ya esta
+//if($_SERVER['REQUEST_URI']!=$_SERVER['PHP_SELF']) // $_SERVER['PHP_SELF'] devuelve el path correcto para entrar al archivo, $_SERVER['REQUEST_URI'] devuelve el path utilizado (estos no van a ser iguales cuando se uso una URL erronea y fue redireccionado a aca)
+//{
+//    exit(file_get_contents('404.html')); 
+//}
 
 // Respuesta correcta para solicitudes OPTIONS (preflight)
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS')

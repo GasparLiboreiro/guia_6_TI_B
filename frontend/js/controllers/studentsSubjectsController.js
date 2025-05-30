@@ -76,6 +76,7 @@ function setupFormHandler()
         } 
         catch (err) 
         {
+            alert("Relacion no añadida, puede estar repetida");
             console.error('Error guardando relación:', err.message);
         }
     });

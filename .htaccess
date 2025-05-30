@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Permitir acceso solo a los archivos listados
+RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/index\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/students\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/subjects\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/studentsSubjects\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/404\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/backend/server\.php$
+RewriteRule ^ - [L]
+
+# Redirigir todo lo demás a un archivo específico
+RewriteRule ^.*$ /guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/404.html [L,R=302]

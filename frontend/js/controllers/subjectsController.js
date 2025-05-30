@@ -33,30 +33,21 @@ function setupSubjectFormHandler()
 
         try 
         {
-            const res = "{}";
-            console.log("BLAAA");//<!0> NO ANDA EL CHEQUEO DE UN ERROR DEL SQL
             if (subject.id) 
             {
                 await subjectsAPI.update(subject);
             }
             else
             {
-                res = await subjectsAPI.create(subject);
+                await subjectsAPI.create(subject);
             }
-            console.error("ERROR");
-            if(JSON.parse(res).error)
-            {
-                alert("No se pudo crear, potencialmente mail ya ingresado");    
-            }
-            else
-            {
-                form.reset();
-                document.getElementById('subjectId').value = '';
-                loadSubjects();
-            }
+            form.reset();
+            document.getElementById('subjectId').value = '';
+            loadSubjects();
         }
         catch (err)
         {
+            alert("No se pudo crear la materia, el nombre puede estar repetido");
             console.error(err.message);
         }
   });
@@ -141,6 +132,7 @@ async function confirmDeleteSubject(id)
     }
     catch (err)
     {
+        alert("No se pudo borrar la materia, puede ser que este siendo usada para una relacion alumno-materia, asegurese de que no hayan relaciones que dependan de esta materia y intente de nuevo");
         console.error('Error al borrar materia:', err.message);
     }
 }

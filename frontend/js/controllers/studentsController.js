@@ -27,7 +27,6 @@ function setupFormHandler()
     
         try 
         {
-            const res ="{}";//<!0>
             if (student.id) 
             {
                 await studentsAPI.update(student);
@@ -36,19 +35,12 @@ function setupFormHandler()
             {
                 res = await studentsAPI.create(student);
             }
-            console.error("ERROR");
-            if(JSON.parse(res).error)
-            {
-                alert("No se pudo crear, potencialmente mail ya ingresado");    
-            }
-            else
-            {
-                clearForm();
-                loadStudents();
-            }
+            clearForm();
+            loadStudents();
         }
         catch (err)
         {
+            alert("Elumno no pudo se añadido, el email puede ya estar ingresado")
             console.error(err.message);
         }
     });
@@ -147,7 +139,7 @@ function fillForm(student)
 async function confirmDelete(id) 
 {
     if (!confirm('¿Estás seguro que deseas borrar este estudiante?')) return;
-  
+    
     try 
     {
         await studentsAPI.remove(id);
@@ -155,6 +147,7 @@ async function confirmDelete(id)
     } 
     catch (err) 
     {
+        alert("No se pudo borrar el alumno, puede ser que este siendo usado para una relacion alumno-materia, asegurese de que no hayan relaciones que dependan de este alumno y intente de nuevo");
         console.error('Error al borrar:', err.message);
     }
 }

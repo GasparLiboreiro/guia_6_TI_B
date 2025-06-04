@@ -1,13 +1,25 @@
 RewriteEngine On
 
+
+
+
+##PROBLEMA
+#con bloquear urls bloqueo muchas mas cosas de las que quiero
+#bloqueo los modulos js del front y bloqueo los css
+#
+
+
+
+
 # Permitir acceso solo a los archivos listados
-RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/index\.html$ [OR]
-RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/students\.html$ [OR]
-RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/subjects\.html$ [OR]
-RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/studentsSubjects\.html$ [OR]
-RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/404\.html$ [OR]
-RewriteCond %{REQUEST_URI} ^/guias/crud-php-prototipo-refactorizado-3.0-main/backend/server\.php$
+RewriteCond %{REQUEST_URI} ^/guias/guia6-7/frontend/index\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/guia6-7/frontend/html/students\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/guia6-7/frontend/html/subjects\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/guia6-7/frontend/html/studentsSubjects\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/guia6-7/frontend/html/404\.html$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/guia6-7/backend/server\.php$ [OR]
+RewriteCond %{REQUEST_URI} ^/guias/guia6-7/frontend/(css|js)/.*
 RewriteRule ^ - [L]
 
 # Redirigir todo lo demás a un archivo específico
-RewriteRule ^.*$ /guias/crud-php-prototipo-refactorizado-3.0-main/frontend/html/404.html [L,R=302]
+RewriteRule ^.*$ /guias/guia6-7/frontend/html/404.html [R=302]

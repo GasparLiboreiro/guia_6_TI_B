@@ -40,7 +40,7 @@ function setupFormHandler()
         }
         catch (err)
         {
-            alert("Elumno no pudo se añadido, el email puede ya estar ingresado")
+            alert("El alumno no pudo ser añadido, el email puede ya estar ingresado")
             console.error(err.message);
         }
     });
